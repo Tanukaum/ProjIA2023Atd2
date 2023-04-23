@@ -1,8 +1,7 @@
 # Isabella Souza Kelles isakelles@#unifei.edu.br
 path_gulosa = list()
 path_estrela = list()
-visitadas_gulosa = list()
-visitadas_estrela = list()
+
 total_distance_gulosa = 0
 total_distance_estrela = 0
 total_percorrido_estrela = 0
@@ -37,26 +36,29 @@ def buscar_menor_Drelativa(cidade):
 
 
     if current_relative_distance > min_relative:
-        return min_relative, city_name, city_distance
+        return city_name, city_distance
     else:
-        return '0', cidade, '0'    
+        return cidade, '0'    
 
 def busca_gulosa(cidade_checar):
     global total_distance_gulosa, path_gulosa
-    relative_distance_temp, city_temp, real_distance_temp = buscar_menor_Drelativa(cidade_checar)
+    city_temp, real_distance_temp = buscar_menor_Drelativa(cidade_checar)
     
-    path_gulosa.append(cidade_checar)
+    
 
-    if cidade_checar != cidade_final:
-        total_distance_gulosa = total_distance_gulosa + real_distance_temp
-        busca_gulosa(city_temp)
+    if (cidade_checar != cidade_final):
+        if cidade_checar not in path_gulosa:
+            path_gulosa.append(cidade_checar)
+
+            total_distance_gulosa = total_distance_gulosa + real_distance_temp
+            busca_gulosa(city_temp)
     
     else:
-        print('Busca Finalizada!')
+        path_gulosa.append(cidade_checar)
+        print('Busca Gulosa Finalizada!')
         print('Rota : ')
         print(path_gulosa)
-        print('Distancia Real Percorrida : ')
-        print(total_distance_gulosa)
+        print('Distancia Real Percorrida : ' + str(total_distance_gulosa))
 
 
 def buscar_menor_Destrela(cidade):
@@ -82,20 +84,21 @@ def busca_estrela(cidade_checar):
     
     star_distance, city_temp, city_distance_real  = buscar_menor_Destrela(cidade_checar)
 
-    path_estrela.append(cidade_checar)
+    
     
     if cidade_checar != cidade_final:
-        total_distance_estrela += star_distance
-        total_percorrido_estrela += city_distance_real
-        busca_estrela(city_temp)
+        if cidade_checar not in path_estrela:
+            path_estrela.append(cidade_checar)
+            total_distance_estrela += star_distance
+            total_percorrido_estrela += city_distance_real
+            busca_estrela(city_temp)
     else:
+        path_estrela.append(cidade_checar)
         print('Busca Estrela Finalizada!')
         print('Rota : ')
         print(path_estrela)
-        print('Distancia estrela final: ')
-        print(total_distance_estrela)
-        print('Distancia real percorrida: ')
-        print(total_percorrido_estrela)
+        print('Distancia Estrela Total: ' + str(total_distance_estrela))
+        print('Distancia Real Percorrida: ' + str(total_percorrido_estrela))
 
 cidade_inicial = 'Arad'
 #cidade_inicial = input('Escolha a cidade inicial: ')
