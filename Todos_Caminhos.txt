@@ -1,7 +1,0 @@
-Caminho:Arad, Sibiu, Fagaras, Bucharest |Distância Real: 140+99+211=450 |Distância Relativa: 366+253+176=795
-Caminho:Arad, Zerind, Oradea, Sibiu, Fagaras, Bucharest |Distância Real: 75+71+151+99+211=607 |Distância Relativa: 366+374+380+253+176=1549
-Caminho:Arad, Zerind, Oradea, Sibiu, Rimnicu Vilcea, Pitest, Bucharest |Distância Real: 75+71+151+80+97+101=575 |Distância Relativa: 366+374+380+253+193+100=1666
-Caminho:Arad, Zerind, Oradea, Sibiu, Rimnicu Vilcea, Craiova, Pitest, Bucharest |Distância Real: 75+71+151+80+146+138+101=762 |Distância Relativa: 366+374+380+253+193+160+100=1826
-Caminho:Arad,Timisoara, Lugoj, Mehadia,Drobeta,Craiova,Pitest, Bucharest |Distância Real: 118+111+70+75+120+138+101=733 |Distância Relativa: 366+329+244+241+242+160+100=1682
-Caminho:Arad,Timisoara, Lugoj, Mehadia,Drobeta,Craiova, Rimnicu Vilcea,Pitest, Bucharest |Distância Real: 118+111+70+75+120+146+97+101=838 |Distância Relativa: 366+329+244+241+242+160+193+100=1875
-Caminho:Arad,Timisoara, Lugoj, Mehadia,Drobeta,Craiova, Rimnicu Vilcea, Sibiu, Fagaras, Bucharest |Distância Real: 118+111+70+75+120+146+80+99+211=1030 |Distância Relativa: 366+329+244+241+242+160+193+253+176=2204
