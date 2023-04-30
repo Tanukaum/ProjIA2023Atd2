@@ -25,21 +25,30 @@ def buscar_menor_Drelativa(cidade):
     temp_names = list()
     temp_distances = list()
 
+# Percorrer a lista de cidadesVizinhas e de DistanciaVizinha da cidade passada
+# e salva em uma lista o nome da cidade vizinha atual (city), junto de sua distancia relativa
+# assim como a distancia vizinha.
+# Todas listas tem mesmo tamanho
     for city,number in zip(mapa[cidade]['CidadeVizinha'], range(len(mapa[cidade]['DistanciaVizinha']))):
         relative_distance_list.append(int(mapa[city]['DistanciaRelativa']))
         temp_names.append(mapa[city]['CidadeAtual'])
         temp_distances.append(int(mapa[cidade]['DistanciaVizinha'][number]))
-           
+
+# Função nativa min é usada para achao o menor valor da lista de distancias relativas
+# Função nativa index é usada para achar o indicie que ocorre o menor valor
+# E assim obter o nome da cidade e sua distância vizinha.     
     min_relative = min(relative_distance_list)
     city_name = temp_names[relative_distance_list.index(min_relative)]
     city_distance = temp_distances[relative_distance_list.index(min_relative)]
 
-
+# Se a menor distância relativa for menor qua a distância relativa da cidade(cidade)
+# Então é porque ainda não é a cidade final
     if current_relative_distance > min_relative:
         return city_name, city_distance
     else:
         return cidade, '0'    
 
+# Realiza a busga gulosa, busca olhando apenas a distância relativa
 def busca_gulosa(cidade_checar):
     global total_distance_gulosa, path_gulosa
     city_temp, real_distance_temp = buscar_menor_Drelativa(cidade_checar)
@@ -66,11 +75,17 @@ def buscar_menor_Destrela(cidade):
     sum_distance = list()
     temp_distances = list()
     
+# Percorrer a lista de cidadesVizinhas e de DistanciaVizinha da cidade passada
+# e salva em uma lista o nome da cidade vizinha atual (city), junto de sua distancia real
+# assim como a soma da distância relativa da cidade vizinha com sua distância real.
+# Todas listas tem mesmo tamanho
     for city,number in zip(mapa[cidade]['CidadeVizinha'], range(len(mapa[cidade]['DistanciaVizinha']))):
         sum_distance.append(mapa[city]['DistanciaRelativa'] + mapa[cidade]['DistanciaVizinha'][number])
         temp_names.append(mapa[city]['CidadeAtual'])
         temp_distances.append(mapa[cidade]['DistanciaVizinha'][number])
-           
+
+# Função nativa min é usada para achao o menor valor da lista de distancias relativas
+# Função nativa index é usada para achar o indicie que ocorre o menor valor   
     min_star_distance = min(sum_distance)
     city_name = temp_names[sum_distance.index(min_star_distance)]
     city_distance = temp_distances[sum_distance.index(min_star_distance)]
@@ -79,6 +94,8 @@ def buscar_menor_Destrela(cidade):
     else:
         return 0, ' ', 0
 
+
+# Busca A* busca utilizando o menor valor da soma da distância relativa com a distância vizinha
 def busca_estrela(cidade_checar):
     global total_distance_estrela, path_estrela, total_percorrido_estrela
     
@@ -101,8 +118,6 @@ def busca_estrela(cidade_checar):
         print('Distancia Real Percorrida: ' + str(total_percorrido_estrela))
 
 cidade_inicial = 'Arad'
-#cidade_inicial = input('Escolha a cidade inicial: ')
-
 cidade_final = 'Bucharest'
 
 
